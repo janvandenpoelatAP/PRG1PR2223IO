@@ -2,21 +2,23 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.Metrics;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PRG1PR2223IO
+namespace IndividueleOefeningen
 {
     internal class Polymorfisme
     {
         public static void ToonSubmenu()
         {
             Console.WriteLine("Uit te voeren oefening?");
-            Console.WriteLine("1: Autoconstructeur ");
-            Console.WriteLine("2: Grootkeuken ");
-            Console.WriteLine("3: DemonstreerFoutafhandelingOverflowZonderException ");
-            Console.WriteLine("4: DemonstreerFoutafhandelingOverflowMetException ");
+            Console.WriteLine("1: Demonstreer Autoconstructeur ");
+            Console.WriteLine("2: Demonstreer Grootkeuken ");
+            Console.WriteLine("3: Demonstreer Rooster");
+            Console.WriteLine("4: Demonstreer Kalender 1");
+            Console.WriteLine("5: Demonstreer Kalender 2");
             int keuze = Convert.ToInt32(Console.ReadLine());
             switch (keuze)
             {
@@ -27,10 +29,13 @@ namespace PRG1PR2223IO
                     Polymorfisme.Grootkeuken();
                     break;
                 case 3:
-                    //Polymorfisme.DemonstreerFoutafhandelingOverflowZonderException();
+                    Polymorfisme.Rooster();
                     break;
                 case 4:
-                    //Polymorfisme.DemonstreerFoutafhandelingOverflowMetException();
+                    Polymorfisme.DemonsteerKalender1();
+                    break;
+                case 5:
+                    Polymorfisme.DemonsteerKalender2();
                     break;
                 default:
                     Console.WriteLine("Ongeldige keuze!");
@@ -68,6 +73,36 @@ namespace PRG1PR2223IO
             ketels.Add(ketel4);
             ketels.Add(ketel5);
             ketels.Add(ketel6);
+        }
+        private static void Rooster()
+        {
+            IRoosterbaar blok1 = new Afspraak(new TimeSpan(0, 20, 0), new TimeSpan(1, 0, 0), new TimeSpan(0, 20, 0), "tandarts");
+            IRoosterbaar blok2 = new Taak(new TimeSpan(2, 0, 0), "dagelijkse oefeningen OOP");
+            System.Console.WriteLine($"Totale kalendertijd: {(blok1.Tijdsduur + blok2.Tijdsduur).Hours}u{(blok1.Tijdsduur + blok2.Tijdsduur).Minutes}m");
+        }
+        private static void DemonsteerKalender1()
+        {
+            Kalender kalender = new Kalender("DemonstratieKalender");
+            string antwoord = string.Empty;
+            do
+            {
+                kalender.VoegToe();
+                Console.WriteLine("Wil je nog een item toevoegen?");
+                antwoord = Console.ReadLine();
+            } while (antwoord.ToUpper() == "JA");
+            kalender.ToonKalender();
+        }
+        public static void DemonsteerKalender2()
+        {
+            Kalender kalender = new Kalender("DemonstratieKalender");
+            string antwoord = string.Empty;
+            do
+            {
+                kalender.VoegToeLosgekoppeld();
+                Console.WriteLine("Wil je nog een item toevoegen?");
+                antwoord = Console.ReadLine();
+            } while (antwoord.ToUpper() == "JA");
+            kalender.ToonKalender();
         }
     }
 }

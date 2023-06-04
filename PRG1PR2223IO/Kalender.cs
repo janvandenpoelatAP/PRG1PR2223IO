@@ -9,17 +9,14 @@ namespace IndividueleOefeningen {
         {
             get { return naam; }
         }
-
         private Dictionary<DateTime,IRoosterbaar> rooster;
         public Dictionary<DateTime,IRoosterbaar> Rooster
         {
             get { return rooster; }
         }
-        
         public Kalender(string naam) {
             this.rooster = new Dictionary<DateTime, IRoosterbaar>();
         }
-
         public void VoegToe() {
             System.Console.WriteLine("Om wat voor object gaat het?");
             System.Console.WriteLine("1. Afspraak");
@@ -51,7 +48,6 @@ namespace IndividueleOefeningen {
             }
             this.Rooster[begin] = item;
         }
-
         public void VoegToeLosgekoppeld() {
             System.Console.WriteLine("Om wat voor object gaat het?");
             System.Console.WriteLine("1. Afspraak");
@@ -69,6 +65,14 @@ namespace IndividueleOefeningen {
             System.Console.WriteLine("Wanneer moet dit geroosterd worden?");
             begin = Convert.ToDateTime(Console.ReadLine(), new CultureInfo("nl-BE"));
             this.Rooster[item.RoosterOm(begin)] = item;
+        }
+        public void ToonKalender()
+        {
+            Console.WriteLine($"Rooster: {Naam}");
+            foreach (var item in this.Rooster) 
+            {
+                Console.WriteLine($"{item.Key} : {item.Value.Omschrijving}");
+            }
         }
     }
 }

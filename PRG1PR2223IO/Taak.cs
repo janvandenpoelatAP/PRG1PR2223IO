@@ -9,24 +9,20 @@ namespace IndividueleOefeningen
         {
             get { return werktijd; }
         }
-
         private string omschrijving;
         public string Omschrijving
         {
             get { return omschrijving; }
         }
-
         public Taak(TimeSpan werktijd, string omschrijving)
         {
             this.werktijd = werktijd;
             this.omschrijving = omschrijving;
         }
-
         public Taak()
         {
 
         }
-
         public TimeSpan Tijdsduur
         {
             get
@@ -34,7 +30,6 @@ namespace IndividueleOefeningen
                 return this.Werktijd;
             }
         }
-
         public void Initialiseer()
         {
             System.Console.WriteLine("Omschrijving?");
@@ -42,7 +37,6 @@ namespace IndividueleOefeningen
             System.Console.WriteLine("Aantal minuten werk?");
             this.werktijd = new TimeSpan(0, Convert.ToInt32(Console.ReadLine()), 0);
         }
-
         public DateTime RoosterOm(DateTime referentie)
         {
             return referentie;

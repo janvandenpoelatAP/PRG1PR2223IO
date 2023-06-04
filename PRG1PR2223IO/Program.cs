@@ -4,17 +4,8 @@ namespace IndividueleOefeningen
 {
     class Program
     {
-
-        private static int testProp;
-        public static int TestProp
-        {
-            get { return testProp; }
-            set { testProp = value; }
-        }
-        
         static void Main(string[] args)
         {
-            Program.TestProp = 5;
             while(true)
             {
                 Console.WriteLine("Topic van de uit te voeren oefening?");
@@ -23,6 +14,7 @@ namespace IndividueleOefeningen
                 Console.WriteLine("3. Datastructuren");
                 Console.WriteLine("4. Overerving");
                 Console.WriteLine("5. Exception handling");
+                Console.WriteLine("6. Polymorfisme");
                 int keuze = Convert.ToInt32(Console.ReadLine());
                 switch (keuze)
                 {
@@ -40,6 +32,9 @@ namespace IndividueleOefeningen
                         break;
                     case 5:
                         ExceptionHandling.ToonSubmenu();
+                        break;
+                    case 6:
+                        Polymorfisme.ToonSubmenu();
                         break;
                     default:
                         Console.WriteLine("Ongeldige keuze");
